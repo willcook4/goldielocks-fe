@@ -5,7 +5,6 @@ import actions from '../redux/actions'
 import Api from '../lib/api'
 import notification from '../components/notifications/notifications'
 import {Input as CustomInput} from '../components/input/input'
-import { ToastContainer } from 'react-toastify'
 import Wrapper from './Login.styles.js'
 import Header from '../components/Header'
 import Icon from '../components/icons'
@@ -17,8 +16,7 @@ class Login extends Component {
       showPasswd: false,
       errors: {
         email: null,
-        password: null,
-        sample: 'null errors here'
+        password: null
       }
     }
 
@@ -64,6 +62,7 @@ class Login extends Component {
         // Save the currentUser for use later
         this.props.storeUser(resp.data.result.user)
 
+        notification('Success, logging you in')
         // Redirect to dashboard
         this.props.history.push('/dashboard')
       })
@@ -93,10 +92,9 @@ class Login extends Component {
       <React.Fragment>
         <Header />
         <Wrapper>
-          <ToastContainer />
           <div className='content'>
+            <h2 className='title'>Sign In</h2>
             <form>
-
               <CustomInput
                 ref={this.emailRef}
                 errors={this.state.errors}
@@ -104,6 +102,7 @@ class Login extends Component {
                 placeholder='Email'
                 type='text'
                 onChange={this.clearError}
+                autocomplete='email'
               />
 
               <CustomInput
@@ -120,13 +119,14 @@ class Login extends Component {
                     }}>
                     {this.state.showPasswd ? (<Icon name='hide' fill='#757575' />) : (<Icon name='show' fill='#757575' />)}
                   </div>}
+                autocomplete='current-password'
               />
               <button
                 className='primary-btn'
                 onClick={(e) => this._handleSubmit(e)}>
                 Sign In</button>
               <span className='link-tag'>Not Registered? <span className='link-text'
-                onClick={() => {this.props.history.push('/register')}}>Sign up here</span></span>
+                onClick={() => { this.props.history.push('/register') }}>Sign up here</span></span>
             </form>
           </div>
         </Wrapper>

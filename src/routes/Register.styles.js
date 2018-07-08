@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   .content {
     width: 90%;
     height: 300px;
@@ -36,5 +36,3 @@ const Wrapper = styled.div`
     }
   }
 `
-
-export default Wrapper

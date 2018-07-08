@@ -35,6 +35,7 @@ export class Input extends Component {
               this.props.onChange(this.props.idName, this.props.errors)
             }}
             style={this.props.addonAfter ? {marginRight: '-40px'} : null}
+            autoComplete={this.props.autocomplete}
           />
           {this.props.addonAfter ? (<span className='add-on-right'>{this.props.addonAfter}</span>) : null}
         </div>
