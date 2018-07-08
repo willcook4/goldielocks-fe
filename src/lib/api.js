@@ -69,6 +69,7 @@ class Api {
 
     return axios.get(endpoint, options)
       .then(function (resp) {
+        console.log('_get resp: ', resp)
         return resp
       })
   }

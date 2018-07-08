@@ -5,9 +5,7 @@ import AppRouter from './AppRouter'
 class App extends Component {
   render () {
     return (
-      <div>
-        <AppRouter url={this.props.match.url} />
-      </div>
+      <AppRouter url={this.props.match.url} />
     )
   }
 }

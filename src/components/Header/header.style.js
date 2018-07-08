@@ -1,12 +1,11 @@
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-  // grid-column: span 3;
-
+  grid-column: span 3;
+  grid-row: 1 / 2; 
   text-align: center;
   color: white;
   height: 80px;
-  width: 100%;
   background-color: #da4531;
   position: relative;
 
