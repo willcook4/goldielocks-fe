@@ -38,11 +38,6 @@ class Register extends Component {
     }
   }
 
-  _testing (e) {
-    e.preventDefault()
-    notification('TESTING STRING')
-  }
-
   // Key === id of element e.g. password
   _renderErrors (key, error) {
     let newErrorState = this.state.errors
@@ -163,8 +158,6 @@ class Register extends Component {
                 Sign Up</button>
               <span className='link-tag'>Already Registered? <span className='link-text'
                 onClick={() => { this.props.history.push('/login') }}>Sign In Here</span></span>
-
-              <button onClick={(e) => this._testing(e)}>TEST</button>
             </form>
           </div>
         </Wrapper>
