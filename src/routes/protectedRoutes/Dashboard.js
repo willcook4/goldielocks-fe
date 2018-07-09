@@ -41,7 +41,11 @@ class Dashboard extends Component {
     let prices = []
     Api.getGoldPrices()
       .then(resp => {
-        prices = resp
+        prices = (resp && resp.data && resp.data.prices) ? resp.data.prices : []
+        console.log('prices: ', prices)
+        this.setState({
+          prices
+        })
       })
       .catch(error => {
         if (error.response) {
@@ -67,9 +71,8 @@ class Dashboard extends Component {
       })
 
     this.setState({
-      user: _store.user,
-      token: _store.token,
-      prices: (prices.length > 0) ? prices.data.prices : []
+      user: _store.user
+      // token: _store.token
     })
   }
 
@@ -81,7 +84,7 @@ class Dashboard extends Component {
   }
 
   render () {
-    console.log(this.state)
+    console.log('state: ', this.state)
     return (
       <Wrapper className='container'>
         <Header pageTitle='Dashboard' />
