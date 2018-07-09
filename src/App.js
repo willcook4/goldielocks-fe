@@ -8,9 +8,10 @@ import { ToastContainer } from 'react-toastify'
 const App = () => {
   return (
     <Provider store={store}>
-      <PublicRoutes />
-        {/* <ToastContainer />
-        </div> */}
+      <div>
+        <PublicRoutes />
+        <ToastContainer />
+      </div>
     </Provider>)
 }
 

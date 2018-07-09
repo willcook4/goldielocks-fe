@@ -12,6 +12,7 @@ import Navigation from '../../components/Navigation'
 import Aside from '../../components/Aside'
 import Footer from '../../components/Footer'
 import Wrapper from './Dashboard.style'
+import notification from '../../components/notifications/notifications'
 
 class Dashboard extends Component {
   constructor (props) {
@@ -19,12 +20,13 @@ class Dashboard extends Component {
     this.state = {
       user: null,
       token: null,
-      prices: null
+      prices: [],
+      message: 'Loading prices...'
     }
     this.onChange = this.onChange.bind(this)
   }
 
-  async componentDidMount () {
+  componentDidMount () {
     // Current User
     let _store = store.getState()
 
@@ -35,13 +37,39 @@ class Dashboard extends Component {
     // }
 
     // Get prices
-    // let prices = await Api.getFakeGoldPrice() // TESTING
-    let prices = await Api.getGoldPrices()
+    // let prices = Api.getFakeGoldPrice() // TESTING
+    let prices = []
+    Api.getGoldPrices()
+      .then(resp => {
+        prices = resp
+      })
+      .catch(error => {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          // console.log('1', error.response.data)
+          // console.log('2',error.response.status)
+          // console.log('3',error.response.headers)
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest
+          // console.log('4',error.request)
+          this.setState({
+          message: (<span>Sorry, an error occured. <br />Try refreshing or logging out and back in again</span>) 
+          }, () => console.log('happens')
+          )
+          notification('Unable to access the internet, check your connection')
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', '5',error.message)
+        }
+        console.log('config: ', error.config)
+      })
 
     this.setState({
       user: _store.user,
       token: _store.token,
-      prices: prices.data.prices || null
+      prices: (prices.length > 0) ? prices.data.prices : []
     })
   }
 
@@ -53,6 +81,7 @@ class Dashboard extends Component {
   }
 
   render () {
+    console.log(this.state)
     return (
       <Wrapper className='container'>
         <Header pageTitle='Dashboard' />
@@ -69,11 +98,10 @@ class Dashboard extends Component {
             </div>) : (
               <div>
                 <h4>Prices</h4>
-                <h4>Prices loading...</h4>
+                <span>{this.state.message}</span>
                 <svg width='6' height='6'>
                   <circle cx='5' cy='5' r='3' fill='red' />
                 </svg>
-                <span>Loading prices...</span>
               </div>)}
         </div>
         <Aside />

@@ -19,9 +19,12 @@ class Navigation extends Component {
   render () {
     return (
       <Wrapper className='navigation'>
-        <span>{(this.state.user && this.state.user.displayName) ?
-          `Welcome ${this.state.user.displayName}!` : 'Welcome!'}</span>
-        <span onClick={() => this.props.actions.signout()}>Sign Out</span>
+        <p className='welcome'>{(this.state.user && this.state.user.displayName) ?
+          `Welcome ${this.state.user.displayName}!` : 'Welcome!'}</p>
+        <div className='actions'>
+          <span className='action' >Your Profile</span>
+          <span className='action' onClick={() => this.props.actions.signout()}>Sign Out</span>
+        </div>
       </Wrapper>
     )
   }
