@@ -84,12 +84,11 @@ class Dashboard extends Component {
   }
 
   render () {
-    console.log('state: ', this.state)
     return (
       <Wrapper className='container'>
         <Header pageTitle='Dashboard' />
         <Navigation actions={this.props} />
-        <div className='main'>
+        <div className='main' id='main'>
           {(this.state.prices && this.state.prices.length > 1) ?
             (<div>
               <h4 style={{display: 'inline-grid'}}>Prices loaded</h4>

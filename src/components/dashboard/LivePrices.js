@@ -7,10 +7,13 @@ import ToolTip from '../linechart/ToolTip'
 class LivePrices extends Component {
   constructor (props) {
     super(props)
+    
     this.state = {
       data: [],
       hoverLoc: null,
-      activePoint: null
+      activePoint: null,
+      chartWidth: 900,
+      chartHeight: 300
     }
   }
 
@@ -48,13 +51,42 @@ class LivePrices extends Component {
   }
 
   render () {
+    // Scale the chart according to the main content window size
+    console.log(document.getElementById('main').getBoundingClientRect().width)
+    let mainElementSize = document.getElementById('main').getBoundingClientRect()
+    let chartWidth = 900
+    let chartHeight = 300
+    // if (mainElementSize.width > (200 + 200 + 30 + 900 + 30 + 200) && 
+    if (window.innerWidth > 1500) {
+      console.log('full size')
+      // leave the default width and height
+    } else if (window.innerWidth <= 1499 && window.innderWidth > 1200) {
+        // smaller desktops
+        chartWidth = 600
+        console.log('smaller desktops')
+    } else if (window.innderWidth < 1199) {
+        // tablet
+        chartWidth = 400
+        console.log('tablets')
+    } else if (window.innderWidth < 800) {
+        // small
+        chartWidth = 300
+        console.log('small')
+    } else {
+      chartWidth = 250
+    }
+
+
     return (
-      <div>
+      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}> 
         {/* The hover tooltip */}
         {this.state.hoverLoc ? (<ToolTip hoverLoc={this.state.hoverLoc} activePoint={this.state.activePoint} />) : null }
         {/* The chart */}
         {(this.state.data.length > 0)
           ? (<LineChart
+            svgHeight={chartHeight}
+            svgWidth={chartWidth}
+            height={320}
             data={this.state.data}
             onChartHover={(hoverLoc, activePoint) => this.handleChartHover(hoverLoc, activePoint)}
             // yLabelSize={90}
