@@ -93,7 +93,7 @@ class Register extends Component {
   render () {
     return (
       <React.Fragment>
-        <Header />
+        <Header {...this.props} />
         <Wrapper>
           <div className='content'>
             <h2 className='title'>Sign Up</h2>

@@ -6,10 +6,13 @@ class Header extends Component {
   render () {
     return (
       <Wrapper className='header'>
-        <h1>Goldielocks</h1>
-        <LogoSVG />
-        <div className='golden-disc'>
-          <GoldenDisc />
+        <div onClick={() => this.props.history.push('/')
+        }>
+          <h1>Goldielocks</h1>
+          <LogoSVG />
+          <div className='golden-disc'>
+            <GoldenDisc />
+          </div>
         </div>
       </Wrapper>
     )

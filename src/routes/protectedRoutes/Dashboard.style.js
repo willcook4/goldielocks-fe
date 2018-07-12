@@ -46,7 +46,7 @@ display: grid;
 
 /* Larger than Desktop HD */
 @media (min-width: 1200px) {
-  background-color: black;
+  background-color: whitesmoke;
   grid-template-columns: 200px 1fr 200px;
   grid-template-rows: 80px 1fr 60px;
   .main {

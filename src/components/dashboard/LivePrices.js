@@ -84,6 +84,7 @@ class LivePrices extends Component {
         {/* The chart */}
         {(this.state.data.length > 0)
           ? (<LineChart
+            color={'#da4531'}
             svgHeight={chartHeight}
             svgWidth={chartWidth}
             height={320}

@@ -8,6 +8,7 @@ const Wrapper = styled.div`
   .linechart-path {
     stroke-width: 3;
     fill: none;
+    stroke-linejoin: round;
   }
 
   .linechart-axis {
@@ -21,7 +22,7 @@ const Wrapper = styled.div`
 
   .linechart-area {
     padding: 8px;
-    fill: cadetblue;
+    fill: #1b5f5e;
     stroke: none;
     opacity: .4;
   }
@@ -32,7 +33,7 @@ const Wrapper = styled.div`
   }
 
   .hover-line {
-    stroke: #7D95B6;
+    stroke: #1b5f5e;
     stroke-width: 44px;
     opacity: 0.2;
   }
