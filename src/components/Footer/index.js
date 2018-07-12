@@ -5,7 +5,10 @@ class Footer extends Component {
   render () {
     return (
       <Wrapper className='footer'>
-        <h2>Footer</h2>
+        <div>
+          <h5>Made by <span>Will Cook</span></h5> 
+          {/* TODO add link */}
+        </div>
       </Wrapper>
     )
   }

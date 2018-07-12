@@ -2,11 +2,25 @@ import styled from 'styled-components'
 
 const Wrapper = styled.div`
   grid-column: span 3;
-  padding: 30px;
-  text-align: center;
-  font-size: 1.4em;
-  background-color: #690;
-  color: white;
+  
+  div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-top: 30px;
+
+    h5 {
+      font-size: 1em;
+      font-weight: lighter;
+      color: white;
+      span {
+        font-weight: bold;
+      }
+    }
+  }
+  
+  background-color: #da4531;
 `
 
 export default Wrapper
