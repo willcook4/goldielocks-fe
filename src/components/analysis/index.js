@@ -74,7 +74,8 @@ class Analysis extends Component {
       this.props.comparisonPoint.p &&
       this.state.buyPrice) {
       investmentAtSelectedTime = Calculate.investmentAtSelectedTime(this.state.amountPurchased, this.props.comparisonPoint.p.substring(1), this.state.buyPrice)
-      console.log('AAAA: ', investmentAtSelectedTime)
+      investmentAtSelectedTime.toFixed(2)
+      console.log('AAAA: ', investmentAtSelectedTime.toFixed(2))
     }
 
     /* % increase or decrease in buy price vs current selected */
@@ -118,7 +119,7 @@ class Analysis extends Component {
         <p><strong>Price diffrence</strong> (selected point - buy price):  £{priceComparison}</p>
         <p><strong>Break even price needed</strong> (buy price + 0.05% sell commission): £{breakEvenPrice}</p>
         <p><strong>Initial value of investment:</strong> £{valueOfInvestment}</p>
-        <p><strong>Value of investment at selected point in time:</strong> £{investmentAtSelectedTime}</p>
+        <p><strong>Value of investment at selected point in time:</strong> £{investmentAtSelectedTime ? investmentAtSelectedTime.toFixed(2) : null}</p>
         <p><strong>Raw return on investment: </strong>{rawReturn}%</p>
         <p><strong>% ROI, (Raw return - sell sales commission): </strong>{realisedROI ? realisedROI.toFixed(2) : null}%</p>
         <p><strong>Return (£) after sales commission: </strong>£{returnInGBP ? returnInGBP.toFixed(2) : null}</p>
