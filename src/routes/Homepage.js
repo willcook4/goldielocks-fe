@@ -9,14 +9,23 @@ class Homepage extends Component {
       <Wrapper>
         <Header {...this.props} />
         <div className='container'>
-          <h1>Homepage</h1>
-          <h4>WIP</h4>
-          <button
-            onClick={() => this.props.history.push('/login')}
-          >Sign In</button>
-          <button
-            onClick={() => this.props.history.push('/register')}
-          >Register</button>
+          <div className='welcome'>
+            <h1 className='center' style={{fontSize: '2em'}}>Welcome</h1>
+            <h4 className='center wip'>This is a WIP, please bear with as I build my idea out</h4>
+          </div>
+          <div className='buttons'>
+            <div style={{display: 'flex', width: '320px', justifyContent: 'space-around'}}>
+              <button
+                className='primary-btn'
+                onClick={() => this.props.history.push('/login')}
+              >Sign In</button>
+              <button
+                className='primary-btn'
+                onClick={() => this.props.history.push('/register')}
+              >Register</button>
+            </div>
+            <p className='link-text why'>Why sign-up?</p>
+          </div>
         </div>
         <Footer />
       </Wrapper>
