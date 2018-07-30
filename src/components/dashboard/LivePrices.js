@@ -53,7 +53,7 @@ class LivePrices extends Component {
   render () {
     // Scale the chart according to the main content window size
     console.log(document.getElementById('main').getBoundingClientRect().width)
-    let mainElementSize = document.getElementById('main').getBoundingClientRect()
+    // let mainElementSize = document.getElementById('main').getBoundingClientRect()
     let chartWidth = 900
     let chartHeight = 300
     // if (mainElementSize.width > (200 + 200 + 30 + 900 + 30 + 200) && 
